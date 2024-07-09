@@ -1,0 +1,31 @@
+{
+  "itemGroup.starsmod.example_tab": "Stars",
+  "itemGroup.starsmod.block_tab": "Stars: Blocks",
+
+  "block.starsmod.moon_stone": "Moon Stone",
+  "block.starsmod.lunar_alloy_ore": "Lunar alloy ore",
+  "block.starsmod.moon_sand": "Moon Sand",
+
+  "item.starsmod.space_helmet": "Space Helmet",
+  "item.starsmod.space_chestplate": "Space Chestplate",
+  "item.starsmod.space_leggings": "Space Legging",
+  "item.starsmod.space_boots": "Space Boot",
+
+  "item.starsmod.fan_blade": "Fan Blade",
+  "item.starsmod.small_battery": "Small Battery",
+  "item.starsmod.filter": "Filter",
+  "item.starsmod.iron_plate": "Iron Plate",
+  "item.starsmod.iron_ring": "Iron Ring",
+  "item.starsmod.bearing": "Bearing",
+  "item.starsmod.steel_ball": "Steel Ball",
+  "item.starsmod.high_pressure_tank": "High-Pressure Tank",
+  "item.starsmod.lunar_alloy_ingot": "Lunar alloy ingot",
+  "item.starsmod.lunar_alloy": "Lunar alloy",
+
+  "advancements.starsmod.root.title": "Stars : The Beginning",
+  "advancements.starsmod.root.description": "\"You can see many stars\"",
+  "advancements.starsmod.moon.title": "Hello! Moon!",
+  "advancements.starsmod.moon.description": "Land on the moon",
+  "advancements.starsmod.get_lunar_alloy.title": "\"A magical thing!\"",
+  "advancements.starsmod.get_lunar_alloy.description": "Obtain lunar alloy, a radioactive aluminum copper alloy"
+}

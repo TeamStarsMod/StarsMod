@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "id": "starsmod",
+  "version": "${version}",
+  "name": "StarsMod",
+  "description": "Minecraft Space Mod",
+  "authors": ["Neko110923" , "Cyh2" , "CycleBai"],
+  "contact": {
+    "repo": "https://www.github.com/Neko110923/StarsMod"
+  },
+  "license": "LGPL-3.0",
+  "icon": "assets/starsmod/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "client": [
+      "cn.neko.starsmod.client.StarsModClient"
+    ],
+    "main": [
+      "cn.neko.starsmod.StarsMod"
+    ]
+  },
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "fabric": "*",
+    "minecraft": "${minecraft_version}"
+  }
+}
