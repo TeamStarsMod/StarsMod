@@ -16,6 +16,14 @@ public class ItemsTab {
             .entries((context, entries) -> {
                 entries.add(ItemRegister.FAN_BLADE);
                 entries.add(ItemRegister.SMALL_BATTERY);
+                entries.add(ItemRegister.BEARING);
+                entries.add(ItemRegister.FILTER);
+                entries.add(ItemRegister.IRON_PLATE);
+                entries.add(ItemRegister.HIGH_PRESSURE_TANK);
+                entries.add(ItemRegister.IRON_RING);
+                entries.add(ItemRegister.STEEL_BALL);
+                entries.add(ItemRegister.LUNAR_ALLOY);
+                entries.add(ItemRegister.LUNAR_ALLOY_INGOT);
             })
             .build();
 
