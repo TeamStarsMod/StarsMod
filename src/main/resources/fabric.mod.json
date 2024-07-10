@@ -4,9 +4,15 @@
   "version": "${version}",
   "name": "StarsMod",
   "description": "Minecraft Space Mod",
-  "authors": ["Neko110923" , "Cyh2" , "CycleBai"],
+  "authors": [
+    "Neko110923",
+    "Cyh2",
+    "CycleBai"
+  ],
   "contact": {
-    "repo": "https://www.github.com/Neko110923/StarsMod"
+    "repo": "https://github.com/Neko110923/StarsMod",
+    "sources": "https://github.com/Neko110923/StarsMod",
+    "issues": "https://github.com/Neko110923/StarsMod/issues"
   },
   "license": "LGPL-3.0",
   "icon": "assets/starsmod/icon.png",
