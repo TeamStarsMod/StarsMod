@@ -14,6 +14,11 @@ public class ItemsTab {
             .icon(() -> new ItemStack(ItemRegister.FAN_BLADE))
             .displayName(Text.translatable("itemGroup.starsmod.item_tab"))
             .entries((context, entries) -> {
+                entries.add(ItemRegister.SPACE_HELMET);
+                entries.add(ItemRegister.SPACE_CHESTPLATE);
+                entries.add(ItemRegister.SPACE_LEGGINGS);
+                entries.add(ItemRegister.SPACE_BOOTS);
+
                 entries.add(ItemRegister.FAN_BLADE);
                 entries.add(ItemRegister.SMALL_BATTERY);
                 entries.add(ItemRegister.BEARING);

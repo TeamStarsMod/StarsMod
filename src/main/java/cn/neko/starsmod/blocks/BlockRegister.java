@@ -9,6 +9,9 @@ import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 
+/**
+ * 注册方块类
+ */
 public class BlockRegister {
     //Blocks
     public static final Block MOON_STONE = new Block(FabricBlockSettings.copy(Blocks.STONE));
