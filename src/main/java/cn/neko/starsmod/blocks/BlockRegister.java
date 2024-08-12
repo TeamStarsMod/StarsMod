@@ -13,18 +13,18 @@ import net.minecraft.util.Identifier;
  * 注册方块类
  */
 public class BlockRegister {
-    //Blocks
+    //方块
     public static final Block MOON_STONE = new Block(FabricBlockSettings.copy(Blocks.STONE));
     public static final Block MOON_SAND = new Block(FabricBlockSettings.copy(Blocks.SAND));
     public static final Block LUNAR_ALLOY_ORE = new Block(FabricBlockSettings.copy(Blocks.STONE));
 
     public static void register() {
-        //Register Blocks
+        //注册方块
         Registry.register(Registries.BLOCK, new Identifier("starsmod", "moon_stone"), MOON_STONE);
         Registry.register(Registries.BLOCK, new Identifier("starsmod", "moon_sand"), MOON_SAND);
         Registry.register(Registries.BLOCK, new Identifier("starsmod", "lunar_alloy_ore"), LUNAR_ALLOY_ORE);
 
-        //Register BlockItems
+        //注册方块物品
         Registry.register(Registries.ITEM, new Identifier("starsmod", "moon_stone"), new BlockItem(MOON_STONE, new Item.Settings()));
         Registry.register(Registries.ITEM, new Identifier("starsmod", "moon_sand"), new BlockItem(MOON_SAND, new Item.Settings()));
         Registry.register(Registries.ITEM, new Identifier("starsmod", "lunar_alloy_ore"), new BlockItem(LUNAR_ALLOY_ORE, new Item.Settings()));

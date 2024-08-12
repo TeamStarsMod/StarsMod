@@ -10,7 +10,7 @@ import net.minecraft.world.World;
 import net.minecraft.world.dimension.DimensionType;
 
 /**
- * Gravity类用于模拟各种星球上的重力效果。
+ * DimensionVelocity类用于模拟各种星球上的重力效果。
  */
 public class DimensionVelocity {
 
@@ -29,9 +29,11 @@ public class DimensionVelocity {
         // 获取实体所在的星球
         RegistryKey<DimensionType> planet = entity.getEntityWorld().getDimensionKey();
         // 调节各个星球上的重力加速度值
-        if (planet.equals(Moon.MOON_TYPE_KEY)) {
-            gravMultiplier = -0.7;
-        } else {
+        if (planet.equals(DimensionRegister.MOON_TYPE_KEY)) {
+            gravMultiplier = -0.8333333333;
+        } else if (planet.equals(DimensionRegister.MARS_TYPE_KEY)){
+            gravMultiplier = -0.6666666666;
+        }else {
             gravMultiplier = 0.0;
         }
 
@@ -56,6 +58,7 @@ public class DimensionVelocity {
         } else {
             gravMultiplier *= 0.04;
         }
+
 
         entity.setVelocity(velocity.add(0, -gravMultiplier, 0));
     }
