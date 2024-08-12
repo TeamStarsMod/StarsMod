@@ -15,7 +15,9 @@ public class BlocksTab {
             .displayName(Text.translatable("itemGroup.starsmod.block_tab"))
             .entries((context, entries) -> {
                 entries.add(BlockRegister.MOON_STONE);
+                entries.add(BlockRegister.MARS_STONE);
                 entries.add(BlockRegister.MOON_SAND);
+                entries.add(BlockRegister.MARS_SAND);
                 entries.add(BlockRegister.LUNAR_ALLOY_ORE);
             })
             .build();

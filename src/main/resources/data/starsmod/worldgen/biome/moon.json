@@ -24,11 +24,9 @@
     [
       "minecraft:large_dripstone",
       "minecraft:dripstone_cluster",
-      "minecraft:pointed_dripstone"
+      "minecraft:pointed_dripstone",
+      "starsmod:lunar_alloy_ore"
     ]
-  ],
-  "lunar_alloy_ore": [
-    "starsmod:lunar_alloy_ore"
   ],
   "legacy_random_source": true,
   "ore_veins_enabled": true,

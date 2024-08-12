@@ -3,8 +3,10 @@
   "itemGroup.starsmod.block_tab": "Stars: Blocks",
 
   "block.starsmod.moon_stone": "Moon Stone",
-  "block.starsmod.lunar_alloy_ore": "Lunar alloy ore",
+  "block.starsmod.mars_stone": "Mars Stone",
   "block.starsmod.moon_sand": "Moon Sand",
+  "block.starsmod.mars_sand": "Mars Sand",
+  "block.starsmod.lunar_alloy_ore": "Lunar alloy ore",
 
   "item.starsmod.space_helmet": "Space Helmet",
   "item.starsmod.space_chestplate": "Space Chestplate",

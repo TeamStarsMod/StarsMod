@@ -16,7 +16,7 @@ public class DimensionVelocity {
 
     public static void onServerTick(MinecraftServer server) {
         for (World world : server.getWorlds()) {
-            for (Entity entity : world.getPlayers()) {
+            for (PlayerEntity entity : world.getPlayers()) {
                 DimensionVelocity.applyGravity(entity);
             }
         }

@@ -3,8 +3,10 @@
   "itemGroup.starsmod.block_tab": "繁星：方块",
 
   "block.starsmod.moon_stone": "月球岩石",
-  "block.starsmod.lunar_alloy_ore": "月球合金矿",
+  "block.starsmod.mars_stone": "火星岩石",
   "block.starsmod.moon_sand": "月球尘土",
+  "block.starsmod.mars_sand": "火星土",
+  "block.starsmod.lunar_alloy_ore": "月球合金矿石",
 
   "item.starsmod.space_helmet": "太空头盔",
   "item.starsmod.space_chestplate": "太空服",

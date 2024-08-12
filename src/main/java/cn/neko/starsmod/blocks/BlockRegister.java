@@ -16,17 +16,23 @@ public class BlockRegister {
     //方块
     public static final Block MOON_STONE = new Block(FabricBlockSettings.copy(Blocks.STONE));
     public static final Block MOON_SAND = new Block(FabricBlockSettings.copy(Blocks.SAND));
+    public static final Block MARS_STONE = new Block(FabricBlockSettings.copy(Blocks.STONE));
+    public static final Block MARS_SAND = new Block(FabricBlockSettings.copy(Blocks.SAND));
     public static final Block LUNAR_ALLOY_ORE = new Block(FabricBlockSettings.copy(Blocks.STONE));
 
     public static void register() {
         //注册方块
         Registry.register(Registries.BLOCK, new Identifier("starsmod", "moon_stone"), MOON_STONE);
         Registry.register(Registries.BLOCK, new Identifier("starsmod", "moon_sand"), MOON_SAND);
+        Registry.register(Registries.BLOCK, new Identifier("starsmod", "mars_stone"), MARS_STONE);
+        Registry.register(Registries.BLOCK, new Identifier("starsmod", "mars_sand"), MARS_SAND);
         Registry.register(Registries.BLOCK, new Identifier("starsmod", "lunar_alloy_ore"), LUNAR_ALLOY_ORE);
 
         //注册方块物品
         Registry.register(Registries.ITEM, new Identifier("starsmod", "moon_stone"), new BlockItem(MOON_STONE, new Item.Settings()));
         Registry.register(Registries.ITEM, new Identifier("starsmod", "moon_sand"), new BlockItem(MOON_SAND, new Item.Settings()));
+        Registry.register(Registries.ITEM, new Identifier("starsmod", "mars_stone"), new BlockItem(MARS_STONE, new Item.Settings()));
+        Registry.register(Registries.ITEM, new Identifier("starsmod", "mars_sand"), new BlockItem(MARS_SAND, new Item.Settings()));
         Registry.register(Registries.ITEM, new Identifier("starsmod", "lunar_alloy_ore"), new BlockItem(LUNAR_ALLOY_ORE, new Item.Settings()));
     }
 }
