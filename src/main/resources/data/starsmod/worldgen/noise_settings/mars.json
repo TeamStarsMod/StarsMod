@@ -329,7 +329,7 @@
             "then_run": {
               "type": "minecraft:block",
               "result_state": {
-                "Name": "starsmod:mars_sand"
+                "Name": "minecraft:red_sand"
               }
             }
           }

@@ -14,6 +14,7 @@ import net.minecraft.world.dimension.DimensionType;
  */
 public class DimensionVelocity {
 
+    //PlayerTickEvent
     public static void onServerTick(MinecraftServer server) {
         for (World world : server.getWorlds()) {
             for (PlayerEntity entity : world.getPlayers()) {
