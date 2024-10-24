@@ -29,5 +29,9 @@
   "advancements.starsmod.moon.title": "你好！月球！",
   "advancements.starsmod.moon.description": "降落在月球上",
   "advancements.starsmod.get_lunar_alloy.title": "\"神奇之物\"",
-  "advancements.starsmod.get_lunar_alloy.description": "获取到“月球合金”，一种带有放射性的铝铜合金"
+  "advancements.starsmod.get_lunar_alloy.description": "获取到“月球合金”，一种带有放射性的铝铜合金",
+
+  "screens.starsmod.rocket_ui": "火箭配置界面",
+  "screens.starsmod.rocket_ui.dismantle": "拆解为方块",
+  "screens.starsmod.electricfurnace": "电力熔炉"
 }
