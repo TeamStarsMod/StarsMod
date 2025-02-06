@@ -1,5 +1,6 @@
 package cn.neko.starsmod.blocks;
 
+import cn.neko.starsmod.blocks.customBlocks.PowerFurnaceBlock;
 import cn.neko.starsmod.blocks.customBlocks.Rocket_t1_Block;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.Block;
@@ -23,6 +24,7 @@ public class BlockRegister {
 
     //特殊方块
     public static final Block ROCKET_T1 = new Rocket_t1_Block(FabricBlockSettings.copy(Blocks.STONE));
+    public static final Block POWER_FURNACE = new PowerFurnaceBlock();
 
     public static void register() {
         //注册方块
@@ -34,6 +36,7 @@ public class BlockRegister {
 
         //注册特殊方块
         Registry.register(Registries.BLOCK, new Identifier("starsmod", "rocket_t1"), ROCKET_T1);
+        Registry.register(Registries.BLOCK, new Identifier("starsmod", "power_furnace"), POWER_FURNACE);
 
         //注册方块物品
         Registry.register(Registries.ITEM, new Identifier("starsmod", "moon_stone"), new BlockItem(MOON_STONE, new Item.Settings()));
@@ -42,5 +45,6 @@ public class BlockRegister {
         Registry.register(Registries.ITEM, new Identifier("starsmod", "mars_sand"), new BlockItem(MARS_SAND, new Item.Settings()));
         Registry.register(Registries.ITEM, new Identifier("starsmod", "lunar_alloy_ore"), new BlockItem(LUNAR_ALLOY_ORE, new Item.Settings()));
         Registry.register(Registries.ITEM, new Identifier("starsmod", "rocket_t1"), new BlockItem(ROCKET_T1, new Item.Settings()));
+        Registry.register(Registries.ITEM, new Identifier("starsmod", "power_furnace"), new BlockItem(POWER_FURNACE, new Item.Settings()));
     }
 }

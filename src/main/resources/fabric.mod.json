@@ -5,9 +5,7 @@
   "name": "StarsMod",
   "description": "Minecraft Space Mod",
   "authors": [
-    "Neko110923",
-    "Cyh2",
-    "CycleBai"
+    "NekoFr"
   ],
   "contact": {
     "repo": "https://github.com/Neko110923/StarsMod",
@@ -27,6 +25,7 @@
   },
   "depends": {
     "fabricloader": ">=${loader_version}",
+    "fabric-key-binding-api-v1": "*",
     "fabric": "*",
     "minecraft": "${minecraft_version}"
   }
