@@ -20,7 +20,7 @@
       "cn.neko.starsmod.client.StarsModClient"
     ],
     "main": [
-      "cn.neko.starsmod.StarsMod"
+      "cn.neko.starsmod.common.StarsMod"
     ]
   },
   "depends": {

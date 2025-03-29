@@ -1,19 +1,19 @@
 {
-  "sea_level": -10000000,
+  "sea_level": 63,
   "disable_mob_generation": false,
   "aquifers_enabled": false,
   "ore_veins_enabled": false,
   "legacy_random_source": false,
   "default_block": {
-    "Name": "starsmod:moon_stone"
+    "Name": "starsmod:mars_stone"
   },
   "default_fluid": {
     "Name": "minecraft:air"
   },
   "noise": {
     "min_y": -64,
-    "height": 384,
-    "size_horizontal": 1,
+    "height": 256,
+    "size_horizontal": 2,
     "size_vertical": 2
   },
   "noise_router": {
@@ -304,7 +304,7 @@
         "if_true": {
           "type": "minecraft:biome",
           "biome_is": [
-            "starsmod:moon"
+            "starsmod:mars"
           ]
         },
         "then_run": {
@@ -329,7 +329,7 @@
             "then_run": {
               "type": "minecraft:block",
               "result_state": {
-                "Name": "starsmod:moon_sand"
+                "Name": "minecraft:red_sand"
               }
             }
           }
