@@ -7,7 +7,6 @@ import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.damage.DamageSource;
-import net.minecraft.entity.damage.DamageTypes;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.network.PacketByteBuf;
 import net.minecraft.registry.RegistryKey;
@@ -18,7 +17,6 @@ import net.minecraft.world.World;
 import net.minecraft.world.dimension.DimensionType;
 
 public class SpaceSuitChecker {
-
     private static final long CHECK_INTERVAL = 40;
 
     public static void onServerTick(MinecraftServer server) {
@@ -36,9 +34,29 @@ public class SpaceSuitChecker {
     private static void checkProtection(PlayerEntity player) {
         if (player.isCreative() || player.isSpectator()) return;
 
-        if (!isWearingFullSpaceSuit(player)) {
+        boolean hasFullSuit = isWearingFullSpaceSuit(player);
+
+        // 无论是否造成伤害都要发送状态
+        if (player instanceof ServerPlayerEntity serverPlayer) {
+            PacketByteBuf buf = PacketByteBufs.create();
+            buf.writeBoolean(!hasFullSuit);
+            ServerPlayNetworking.send(serverPlayer, ModPackets.OXYGEN_WARNING_PACKET, buf);
+        }
+
+        if (!hasFullSuit) {
             applyOxygenDamage(player);
         }
+    }
+
+    private static void applyOxygenDamage(PlayerEntity player) {
+        if (player.timeUntilRegen > 10) return;
+
+        DamageSource noOxygenDamage = new DamageSource(
+                player.getWorld().getRegistryManager()
+                        .get(RegistryKeys.DAMAGE_TYPE)
+                        .entryOf(CustomDamageTypes.NO_OXYGEN_DAMAGE)
+        );
+        player.damage(noOxygenDamage, 5.0f);
     }
 
     private static boolean isWearingFullSpaceSuit(PlayerEntity player) {
@@ -46,38 +64,6 @@ public class SpaceSuitChecker {
                 player.getEquippedStack(EquipmentSlot.CHEST).isOf(ItemRegister.SPACE_CHESTPLATE) &&
                 player.getEquippedStack(EquipmentSlot.LEGS).isOf(ItemRegister.SPACE_LEGGINGS) &&
                 player.getEquippedStack(EquipmentSlot.FEET).isOf(ItemRegister.SPACE_BOOTS);
-    }
-
-    private static void applyOxygenDamage(PlayerEntity player) {
-        if (player.timeUntilRegen > 10) return;
-
-        // 获取缺氧伤害类型
-        DamageSource noOxygenDamage = new DamageSource(
-                player.getWorld().getRegistryManager()
-                        .get(RegistryKeys.DAMAGE_TYPE)
-                        .entryOf(CustomDamageTypes.NO_OXYGEN_DAMAGE));
-
-        player.damage(noOxygenDamage, 6.0f);
-
-        // 发送警告状态到客户端
-        PacketByteBuf warnBuf = PacketByteBufs.create();
-        warnBuf.writeBoolean(true);
-        ServerPlayNetworking.send(
-                (ServerPlayerEntity) player,
-                ModPackets.OXYGEN_WARNING_PACKET,
-                warnBuf
-        );
-
-        // 取消警告
-        if (isWearingFullSpaceSuit(player)) {
-            PacketByteBuf warnBuf1 = PacketByteBufs.create();
-            warnBuf1.writeBoolean(false);
-            ServerPlayNetworking.send(
-                    (ServerPlayerEntity) player,
-                    ModPackets.OXYGEN_WARNING_PACKET,
-                    warnBuf1
-            );
-        }
     }
 
     private static boolean isSpaceDimension(World world) {

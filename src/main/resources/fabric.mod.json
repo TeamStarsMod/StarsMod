@@ -5,12 +5,12 @@
   "name": "StarsMod",
   "description": "Minecraft Space Mod",
   "authors": [
-    "NekoFr"
+    "NekoEpisode"
   ],
   "contact": {
-    "repo": "https://github.com/Neko110923/StarsMod",
-    "sources": "https://github.com/Neko110923/StarsMod",
-    "issues": "https://github.com/Neko110923/StarsMod/issues"
+    "repo": "https://github.com/TeamStarsMod/StarsMod",
+    "sources": "https://github.com/TeamStarsMod/StarsMod",
+    "issues": "https://github.com/TeamStarsMod/StarsMod/issues"
   },
   "license": "LGPL-3.0",
   "icon": "assets/starsmod/icon.png",

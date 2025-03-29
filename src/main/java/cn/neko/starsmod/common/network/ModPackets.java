@@ -11,10 +11,7 @@ public class ModPackets {
     public static void registerClientReceivers() {
         ClientPlayNetworking.registerGlobalReceiver(OXYGEN_WARNING_PACKET, (client, handler, buf, responseSender) -> {
             boolean state = buf.readBoolean();
-            client.execute(() -> {
-                OxygenHudRenderer.setWarningState(state);
-                StarsMod.LOGGER.info("Received oxygen warning packet: " + state);
-            });
+            client.execute(() -> OxygenHudRenderer.setWarningState(state));
         });
     }
 }

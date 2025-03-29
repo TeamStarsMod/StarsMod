@@ -16,11 +16,9 @@ public class OxygenHudRenderer implements HudRenderCallback {
         MinecraftClient client = MinecraftClient.getInstance();
         if (client.player == null || !showWarning) return;
 
-        // 获取屏幕尺寸
         int width = client.getWindow().getScaledWidth();
         int height = client.getWindow().getScaledHeight();
 
-        // 渲染文字（带阴影）
         Text warningText = Text.translatable("gameplay.starsmod.nooxygen");
         int textWidth = client.textRenderer.getWidth(warningText);
         drawContext.drawTextWithShadow(
@@ -28,10 +26,9 @@ public class OxygenHudRenderer implements HudRenderCallback {
                 warningText,
                 (width - textWidth) / 2,
                 height / 4,
-                0xFF2222 // 红色
+                0xFF2222
         );
 
-        // 可选：渲染图标
         /*drawContext.drawTexture(
                 WARNING_ICON,
                 (width - 16) / 2,
