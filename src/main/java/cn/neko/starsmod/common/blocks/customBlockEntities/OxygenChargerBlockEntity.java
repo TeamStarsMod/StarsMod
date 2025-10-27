@@ -1,7 +1,8 @@
 package cn.neko.starsmod.common.blocks.customBlockEntities;
 
-import cn.neko.starsmod.common.entity.EntityRegister;
-import cn.neko.starsmod.common.screens.customScreenHandlers.PowerFurnaceScreenHandler;
+import cn.neko.starsmod.common.blocks.BlockRegister;
+import cn.neko.starsmod.common.items.customItems.oxygenTanks.OxygenTankItem;
+import cn.neko.starsmod.common.screens.customScreenHandlers.OxygenChargerScreenHandler;
 import net.fabricmc.fabric.api.screenhandler.v1.ExtendedScreenHandlerFactory;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
@@ -20,14 +21,32 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
-public class PowerFurnaceBlockEntity extends BlockEntity implements ExtendedScreenHandlerFactory, Inventory {
-    private final DefaultedList<ItemStack> inventory = DefaultedList.ofSize(3, ItemStack.EMPTY);
-    private int burnTime;
-    private int fuelTime;
-    private int cookTime;
+public class OxygenChargerBlockEntity extends BlockEntity implements ExtendedScreenHandlerFactory, Inventory {
+    private final DefaultedList<ItemStack> inventory = DefaultedList.ofSize(2, ItemStack.EMPTY);
 
-    public PowerFurnaceBlockEntity(BlockPos pos, BlockState state) {
-        super(EntityRegister.POWER_FURNACE_BLOCK_ENTITY, pos, state);
+    public OxygenChargerBlockEntity(BlockPos pos, BlockState state) {
+        super(BlockRegister.OXYGEN_CHARGER_BLOCK_ENTITY, pos, state);
+    }
+
+    public DefaultedList<ItemStack> getItems() {
+        return inventory;
+    }
+
+    public static void tick(World world, BlockPos pos, BlockState state, OxygenChargerBlockEntity entity) {
+        if (world.isClient) return;
+
+        ItemStack stack = entity.getItems().get(1); // 获取氧气罐
+        if (!stack.isEmpty() && stack.getItem() instanceof OxygenTankItem tank) {
+            NbtCompound nbt = stack.getOrCreateNbt();
+            int currentOxygen = nbt.getInt("oxygen");
+            int maxOxygen = tank.getMaxOxygen();
+
+            if (currentOxygen < maxOxygen) {
+                nbt.putInt("oxygen", currentOxygen + 10);
+                stack.setNbt(nbt);
+                markDirty(world, pos, state);
+            }
+        }
     }
 
     @Override
@@ -37,47 +56,13 @@ public class PowerFurnaceBlockEntity extends BlockEntity implements ExtendedScre
 
     @Override
     public Text getDisplayName() {
-        return Text.literal("PowerFurnace");
+        return Text.of("Oxygen Charger");
     }
 
     @Nullable
     @Override
     public ScreenHandler createMenu(int syncId, PlayerInventory playerInventory, PlayerEntity player) {
-        return new PowerFurnaceScreenHandler(syncId, playerInventory, this);
-    }
-
-    @Override
-    public void readNbt(NbtCompound nbt) {
-        super.readNbt(nbt);
-        Inventories.readNbt(nbt, inventory);
-        burnTime = nbt.getInt("BurnTime");
-        fuelTime = nbt.getInt("FuelTime");
-        cookTime = nbt.getInt("CookTime");
-    }
-
-    @Override
-    protected void writeNbt(NbtCompound nbt) {
-        super.writeNbt(nbt);
-        Inventories.writeNbt(nbt, inventory);
-        nbt.putInt("BurnTime", burnTime);
-        nbt.putInt("FuelTime", fuelTime);
-        nbt.putInt("CookTime", cookTime);
-    }
-
-    public static void tick(World world, BlockPos pos, BlockState state, PowerFurnaceBlockEntity blockEntity) {
-        // 实现燃烧逻辑
-        if (blockEntity.isBurning()) {
-            blockEntity.burnTime--;
-        }
-
-        if (!world.isClient) {
-            // 更新方块状态
-            world.updateListeners(pos, state, state, 3);
-        }
-    }
-
-    private boolean isBurning() {
-        return burnTime > 0;
+        return new OxygenChargerScreenHandler(syncId, playerInventory, this);
     }
 
     @Override
@@ -113,9 +98,6 @@ public class PowerFurnaceBlockEntity extends BlockEntity implements ExtendedScre
     @Override
     public void setStack(int slot, ItemStack stack) {
         inventory.set(slot, stack);
-        if (stack.getCount() > this.getMaxCountPerStack()) {
-            stack.setCount(this.getMaxCountPerStack());
-        }
     }
 
     @Override

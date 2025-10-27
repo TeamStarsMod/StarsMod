@@ -10,7 +10,7 @@ import net.minecraft.registry.Registry;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 
-public class ItemsTab {
+public class ItemsTabRegister {
     private static final ItemGroup ITEM_GROUP = FabricItemGroup.builder()
             .icon(() -> new ItemStack(ItemRegister.FAN_BLADE))
             .displayName(Text.translatable("itemGroup.starsmod.item_tab"))
@@ -25,7 +25,7 @@ public class ItemsTab {
                 entries.add(ItemRegister.BEARING);
                 entries.add(ItemRegister.FILTER);
                 entries.add(ItemRegister.IRON_PLATE);
-                entries.add(ItemRegister.HIGH_PRESSURE_TANK);
+                entries.add(ItemRegister.LOW_OXYGEN_TANKS);
                 entries.add(ItemRegister.IRON_RING);
                 entries.add(ItemRegister.STEEL_BALL);
                 entries.add(ItemRegister.LUNAR_ALLOY);

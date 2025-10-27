@@ -1,4 +1,4 @@
-package cn.neko.starsmod.common.screens;
+package cn.neko.starsmod.common.screens.customScreenHandlers;
 
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -10,14 +10,14 @@ import net.minecraft.text.Text;
 public class RocketScreen extends Screen {
 
     public RocketScreen() {
-        super(Text.translatable("screens.starsmod.rocket_ui"));
+        super(Text.translatable("screens.starsmod.rocket_configure_ui"));
     }
 
     public ButtonWidget button1;
 
     @Override
     protected void init() {
-        button1 = ButtonWidget.builder(Text.translatable("screens.starsmod.rocket_ui.dismantle"), button -> {
+        button1 = ButtonWidget.builder(Text.translatable("screens.starsmod.rocket_configure_ui.destination"), button -> {
             //这里是点击按钮执行的内容
             close();
         })

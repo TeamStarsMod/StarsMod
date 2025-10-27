@@ -2,6 +2,8 @@ package cn.neko.starsmod.common.items;
 
 import cn.neko.starsmod.common.StarsMod;
 import cn.neko.starsmod.common.armor.SpaceSuitMaterial;
+import cn.neko.starsmod.common.items.customItems.TestItem;
+import cn.neko.starsmod.common.items.customItems.oxygenTanks.LowOxygenTankItem;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.minecraft.item.ArmorItem;
 import net.minecraft.item.Item;
@@ -26,9 +28,11 @@ public class ItemRegister {
     public static final Item IRON_RING = new Item(new FabricItemSettings());
     public static final Item BEARING = new Item(new FabricItemSettings());
     public static final Item STEEL_BALL = new Item(new FabricItemSettings());
-    public static final Item HIGH_PRESSURE_TANK = new Item(new FabricItemSettings());
+    public static final Item LOW_OXYGEN_TANKS = new LowOxygenTankItem(new FabricItemSettings());
     public static final Item LUNAR_ALLOY = new Item(new FabricItemSettings());
     public static final Item LUNAR_ALLOY_INGOT = new Item(new FabricItemSettings());
+    // Tests
+    public static final Item TEST_ITEM = new TestItem(new FabricItemSettings());
 
     public static void register(){
         Registry.register(Registries.ITEM, new Identifier(StarsMod.MOD_ID, "space_helmet"), SPACE_HELMET);
@@ -43,8 +47,10 @@ public class ItemRegister {
         Registry.register(Registries.ITEM, new Identifier(StarsMod.MOD_ID, "iron_ring"), IRON_RING);
         Registry.register(Registries.ITEM, new Identifier(StarsMod.MOD_ID, "bearing"), BEARING);
         Registry.register(Registries.ITEM, new Identifier(StarsMod.MOD_ID, "steel_ball"), STEEL_BALL);
-        Registry.register(Registries.ITEM, new Identifier(StarsMod.MOD_ID, "high_pressure_tank"), HIGH_PRESSURE_TANK);
+        Registry.register(Registries.ITEM, new Identifier(StarsMod.MOD_ID, "low_oxygen_tanks"), LOW_OXYGEN_TANKS);
         Registry.register(Registries.ITEM, new Identifier(StarsMod.MOD_ID, "lunar_alloy"), LUNAR_ALLOY);
         Registry.register(Registries.ITEM, new Identifier(StarsMod.MOD_ID, "lunar_alloy_ingot"), LUNAR_ALLOY_INGOT);
+
+        Registry.register(Registries.ITEM, new Identifier(StarsMod.MOD_ID, "test_item"), TEST_ITEM);
     }
 }

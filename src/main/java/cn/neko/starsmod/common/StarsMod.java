@@ -5,8 +5,10 @@ import cn.neko.starsmod.common.dimension.DimensionVelocity;
 import cn.neko.starsmod.common.dimension.SpaceSuitChecker;
 import cn.neko.starsmod.common.entity.rocket_t1.Rocket_t1_entity;
 import cn.neko.starsmod.common.items.ItemRegister;
-import cn.neko.starsmod.common.tabs.BlocksTab;
-import cn.neko.starsmod.common.tabs.ItemsTab;
+import cn.neko.starsmod.common.network.ModPackets;
+import cn.neko.starsmod.common.screens.ScreenHandlerRegister;
+import cn.neko.starsmod.common.tabs.BlocksTabRegister;
+import cn.neko.starsmod.common.tabs.ItemsTabRegister;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
@@ -21,21 +23,27 @@ public class StarsMod implements ModInitializer {
 
     @Override
     public void onInitialize() {
-        //Register Blocks and BlockItems
+        // Register Blocks and BlockItems
         BlockRegister.register();
 
-        //Register Items
+        // Register Items
         ItemRegister.register();
 
-        //Register CreativeTabs
-        BlocksTab.register();
-        ItemsTab.register();
+        // Register CreativeTabs
+        BlocksTabRegister.register();
+        ItemsTabRegister.register();
 
-        //Events
-        ServerTickEvents.START_SERVER_TICK.register(DimensionVelocity::onServerTick); //注册玩家重力(Tick)事件
+        // Events
+        ServerTickEvents.END_SERVER_TICK.register(DimensionVelocity::onServerTick); //注册玩家重力(Tick)事件
         ServerTickEvents.START_SERVER_TICK.register(SpaceSuitChecker::onServerTick);
 
-        //Entity
+        // Entity
         FabricDefaultAttributeRegistry.register(Rocket_T1, Rocket_t1_entity.createMobAttributes());
+
+        // Network Packets
+        ModPackets.registerServerReceivers();
+
+        // ScreenHandlers
+        ScreenHandlerRegister.register();
     }
 }

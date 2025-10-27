@@ -20,7 +20,7 @@
   "item.starsmod.iron_ring": "Iron Ring",
   "item.starsmod.bearing": "Bearing",
   "item.starsmod.steel_ball": "Steel Ball",
-  "item.starsmod.high_pressure_tank": "High-Pressure Tank",
+  "item.starsmod.low_oxygen_tanks": "Low-Oxygen Tank",
   "item.starsmod.lunar_alloy_ingot": "Lunar alloy ingot",
   "item.starsmod.lunar_alloy": "Lunar alloy",
 
@@ -31,11 +31,13 @@
   "advancements.starsmod.get_lunar_alloy.title": "\"A magical thing!\"",
   "advancements.starsmod.get_lunar_alloy.description": "lunar alloy, a radioactive aluminum copper alloy",
 
-  "screens.starsmod.rocket_ui": "Rocket configuration UI",
-  "screens.starsmod.rocket_ui.dismantle": "Disassemble into blocks",
+  "screens.starsmod.rocket_configure_ui": "Rocket configuration UI",
+  "screens.starsmod.rocket_configure_ui.destination": "Destination",
+
   "screens.starsmod.electricfurnace": "Electric Furnace",
 
   "key.starsmod.rocket_fire": "Rocket Fire",
+  "key.starsmod.rocket_configure": "Rocket Configure",
 
   "gameplay.starsmod.nooxygen": "No Oxygen!",
 

@@ -1,5 +1,6 @@
-package cn.neko.starsmod.common.screens;
+package cn.neko.starsmod.common.screens.customScreenHandlers;
 
+import cn.neko.starsmod.common.screens.ScreenHandlerRegister;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.Inventory;
@@ -32,6 +33,7 @@ public class PowerFurnaceScreenHandler extends ScreenHandler {
         this.addSlot(new Slot(inventory, 1, 56, 53)); // 燃料槽
         this.addSlot(new Slot(inventory, 2, 116, 35)); // 输出槽
     }
+
     public PowerFurnaceScreenHandler(int syncId, PlayerInventory playerInventory) {
         this(syncId, playerInventory, new SimpleInventory(3));
     }
@@ -43,7 +45,6 @@ public class PowerFurnaceScreenHandler extends ScreenHandler {
 
     @Override
     public ItemStack quickMove(PlayerEntity player, int slot) {
-        // 实现快速移动逻辑
         return ItemStack.EMPTY;
     }
 }

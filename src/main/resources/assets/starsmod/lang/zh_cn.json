@@ -31,11 +31,12 @@
   "advancements.starsmod.get_lunar_alloy.title": "\"神奇之物\"",
   "advancements.starsmod.get_lunar_alloy.description": "“月球合金”，一种带有放射性的铝铜合金",
 
-  "screens.starsmod.rocket_ui": "火箭配置界面",
-  "screens.starsmod.rocket_ui.dismantle": "拆解为方块",
+  "screens.starsmod.rocket_configure_ui": "火箭配置界面",
+  "screens.starsmod.rocket_configure_ui.destination": "目的地",
   "screens.starsmod.electricfurnace": "电力熔炉",
 
   "key.starsmod.rocket_fire": "火箭发射",
+  "key.starsmod.rocket_configure": "配置火箭",
 
   "gameplay.starsmod.nooxygen": "无氧气！",
 

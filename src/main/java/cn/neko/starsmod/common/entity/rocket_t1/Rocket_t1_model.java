@@ -13,7 +13,7 @@ public class Rocket_t1_model extends EntityModel<Rocket_t1_entity> {
 	public static TexturedModelData getTexturedModelData() {
 		ModelData modelData = new ModelData();
 		ModelPartData modelPartData = modelData.getRoot();
-		ModelPartData bb_main = modelPartData.addChild("bb_main", ModelPartBuilder.create().uv(0, 0).cuboid(-1.0F, -7.0F, -1.0F, 3.0F, 5.0F, 3.0F, new Dilation(0.0F))
+		modelPartData.addChild("bb_main", ModelPartBuilder.create().uv(0, 0).cuboid(-1.0F, -7.0F, -1.0F, 3.0F, 5.0F, 3.0F, new Dilation(0.0F))
 		.uv(12, 0).cuboid(0.0F, -4.0F, -2.0F, 1.0F, 4.0F, 1.0F, new Dilation(0.0F))
 		.uv(8, 8).cuboid(-2.0F, -4.0F, 0.0F, 1.0F, 4.0F, 1.0F, new Dilation(0.0F))
 		.uv(4, 8).cuboid(0.0F, -4.0F, 2.0F, 1.0F, 4.0F, 1.0F, new Dilation(0.0F))

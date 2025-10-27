@@ -10,7 +10,7 @@ import net.minecraft.registry.Registry;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 
-public class BlocksTab {
+public class BlocksTabRegister {
     private static final ItemGroup BLOCK_GROUP = FabricItemGroup.builder()
             .icon(() -> new ItemStack(BlockRegister.MOON_STONE))
             .displayName(Text.translatable("itemGroup.starsmod.block_tab"))

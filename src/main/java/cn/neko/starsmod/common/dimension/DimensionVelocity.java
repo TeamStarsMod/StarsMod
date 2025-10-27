@@ -9,64 +9,52 @@ import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import net.minecraft.world.dimension.DimensionType;
 
-/**
- * DimensionVelocity类用于模拟各种星球上的重力效果。
- */
 public class DimensionVelocity {
 
-    //PlayerTickEvent
     public static void onServerTick(MinecraftServer server) {
         for (World world : server.getWorlds()) {
-            for (PlayerEntity entity : world.getPlayers()) {
-                DimensionVelocity.applyGravity(entity);
+            RegistryKey<DimensionType> dimensionType = world.getDimensionKey();
+            if (needsCustomGravity(dimensionType)) {
+                for (Entity entity : world.getPlayers()) {
+                    applyCustomGravity(entity, dimensionType);
+                }
             }
         }
     }
 
-    public static void applyGravity(Entity entity) {
-        // 重力加速度值
-        double gravMultiplier;
+    private static void applyCustomGravity(Entity entity, RegistryKey<DimensionType> dimension) {
+        // 排除坐骑或飞行玩家
+        if (entity.getVehicle() != null) return;
+        if (entity instanceof PlayerEntity player && player.getAbilities().flying) return;
 
-        // 获取实体所在的星球
-        RegistryKey<DimensionType> planet = entity.getEntityWorld().getDimensionKey();
-        // 调节各个星球上的重力加速度值
-        if (planet.equals(DimensionRegister.MOON_TYPE_KEY)) {
-            gravMultiplier = -0.8333333333;
-        } else if (planet.equals(DimensionRegister.MARS_TYPE_KEY)){
-            gravMultiplier = -0.6666666666;
-        }else {
-            gravMultiplier = 0.0;
-        }
+        Vec3d velocity = entity.getVelocity();
+        double gravityReduction = getGravityReduction(dimension);
 
-        // 检测实体是否有骑乘物
-        if (entity.getVehicle() != null) {
-            return;
-        }
-
-        // 检测玩家是否在飞行
-        if (entity instanceof PlayerEntity player){
-            if (player.getAbilities().flying){
-                return;
-            }
-        }
-
-        //调整并应用重力
+        // 对不同类型实体调整增量
         if (entity instanceof LivingEntity) {
-            gravMultiplier *= 0.0755;
+            gravityReduction *= 0.0755; // 玩家/生物
         } else {
-            gravMultiplier *= 0.04;
+            gravityReduction *= 0.04; // 物品/其他实体
         }
 
-        // 替换原有速度计算逻辑
-        Vec3d currentVelocity = entity.getVelocity();
-        double deltaY = currentVelocity.y - gravMultiplier;
-        Vec3d newVelocity = new Vec3d(currentVelocity.x, deltaY, currentVelocity.z);
-
-        // 只有当速度实际发生变化时，才更新速度和设置velocityModified
-        if (!newVelocity.equals(entity.getVelocity())) {
-            entity.setVelocity(newVelocity);
-            entity.velocityModified = true;
+        // 只在空中减少下落速度
+        if (!entity.isOnGround() && velocity.y <= 0) {
+            // 累加 y 方向速度，减缓下落
+            entity.getVelocity().add(0, gravityReduction, 0);
         }
+    }
+
+    private static double getGravityReduction(RegistryKey<DimensionType> dimension) {
+        if (dimension.equals(DimensionRegister.MOON_TYPE_KEY)) {
+            return 0.065; // 月球低重力
+        } else if (dimension.equals(DimensionRegister.MARS_TYPE_KEY)) {
+            return 0.025; // 火星低重力
+        }
+        return 0.0;
+    }
+
+    private static boolean needsCustomGravity(RegistryKey<DimensionType> dimension) {
+        return dimension.equals(DimensionRegister.MOON_TYPE_KEY) ||
+                dimension.equals(DimensionRegister.MARS_TYPE_KEY);
     }
 }
-
